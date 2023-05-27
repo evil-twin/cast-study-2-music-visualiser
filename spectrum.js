@@ -2,17 +2,24 @@ function Spectrum(){
 	this.name = "spectrum";
 
 	this.draw = function(){
-		push();
 		var spectrum = fourier.analyze();
+		push();
 		noStroke();
-		
-		fill(0,255,0)
+
 		for (var i = 0; i< spectrum.length; i++){
-			var x = map(i, 0, spectrum.length, 0, width);
-		    var h = -height + map(spectrum[i], 0, 255, height, 0);
-		    rect(x, height, width / spectrum.length, h );
-  		}
-	
+			// define deminsions
+			var y = map(i, 0, spectrum.length, 0, height);
+			var w = width - map(spectrum[i], 0, 255, width, 0);
+			
+			// set colors
+			var red = spectrum[i];
+			var green = map(spectrum[i], 0, 255, 255, 0);
+			fill(red, green, 0);
+			
+			// draw
+			rect(0, y, w, width / spectrum.length);
+		}
+
 		pop();
 	};
 }
