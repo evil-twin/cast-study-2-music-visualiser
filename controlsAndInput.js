@@ -9,9 +9,15 @@ function ControlsAndInput(){
 
 	//make the window fullscreen or revert to windowed
 	this.mousePressed = function(){
-		//???
-		//check if the playback button has been clicked
-		//if not make the visualisation fullscreen
+		var fs = fullscreen();
+		if (
+			this.playbackButton.x < mouseX && this.playbackButton.x + this.playbackButton.width > mouseX &&
+			this.playbackButton.y < mouseY && this.playbackButton.y + this.playbackButton.height > mouseY
+		) {
+			this.playbackButton.hitCheck();
+		} else {
+    	fullscreen(!fs);
+		}
 	};
 
 	//responds to keyboard presses
