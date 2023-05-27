@@ -56,7 +56,9 @@ function ControlsAndInput(){
 
 	this.menu = function(){
 		//draw out menu items for each visualisation
-		//???
+		for(var i = 1; i<=3; i++) {
+			text( i + " - " + vis.visuals[i-1].name, 120, 40 + i * 40);
+		}
 	};
 }
 
